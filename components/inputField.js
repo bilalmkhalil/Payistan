@@ -10,7 +10,7 @@ const InputField = (props) => {
         <View style={styles.loginInput}>
             <Feather name={props.iconName} size={21} style={styles.leftIcon} />
             <TextInput style={styles.inputField} secureTextEntry={props.password && hidePassword} 
-                {...props} onChangeText={ (text)=> props.data(text, props.placeholder) } />
+                {...props} onChangeText={ (text) => props.data(text, props.placeholder) } />
             { props.password &&
                 <Feather name={hidePassword ? "eye" : "eye-off" } size={21} style={styles.rightIcon} 
                     onPress={()=> setHidePassword(!hidePassword)} /> } 

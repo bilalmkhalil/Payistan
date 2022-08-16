@@ -1,51 +1,39 @@
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import Button from "./button";
 
+const Numpad = (props) => {
+    const numberHandler = (data) => {
+        console.log(data)
+    }
 
-const Numpad = () => {
     return (
         <View style={styles.numpad}>
+            <View style={styles.display}>
+                <Text style={styles.displayText}>Rs 1,200</Text>
+            </View>
+
             <View style={styles.numpadContainer}>
                 <View style={styles.numRows}>
-                    <TouchableOpacity style={styles.numContainer}>
-                        <Text style={styles.number}>1</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.numContainer}>
-                        <Text style={styles.number}>2</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.numContainer}>
-                        <Text style={styles.number}>3</Text>
-                    </TouchableOpacity>
+                    <Button text="1" numContainer={styles.numContainer} number={styles.number} onPress={() => numberHandler("1")}/>
+                    <Button text="2" numContainer={styles.numContainer} number={styles.number} />
+                    <Button text="3" numContainer={styles.numContainer} number={styles.number} />
                 </View>
                 <View style={styles.numRows}>
-                    <TouchableOpacity style={styles.numContainer}>
-                        <Text style={styles.number}>4</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.numContainer}>
-                        <Text style={styles.number}>5</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.numContainer}>
-                        <Text style={styles.number}>6</Text>
-                    </TouchableOpacity>
+                    <Button text="4" numContainer={styles.numContainer} number={styles.number} />
+                    <Button text="5" numContainer={styles.numContainer} number={styles.number} />
+                    <Button text="6" numContainer={styles.numContainer} number={styles.number} />
                 </View>
                 <View style={styles.numRows}>
-                    <TouchableOpacity style={styles.numContainer}>
-                        <Text style={styles.number}>7</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.numContainer}>
-                        <Text style={styles.number}>8</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.numContainer}>
-                        <Text style={styles.number}>9</Text>
-                    </TouchableOpacity>
+                    <Button text="7" numContainer={styles.numContainer} number={styles.number} />
+                    <Button text="8" numContainer={styles.numContainer} number={styles.number} />
+                    <Button text="9" numContainer={styles.numContainer} number={styles.number} />
                 </View>
                 <View style={styles.numRows}>
                     <TouchableOpacity style={styles.numContainer}>
                         <Text style={styles.number}>   </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.numContainer}>
-                        <Text style={styles.number}>0</Text>
-                    </TouchableOpacity>
+                    <Button text="0" numContainer={styles.numContainer} number={styles.number} />
                     <TouchableOpacity style={styles.numContainer}>
                         <Ionicons name="ios-backspace" style={styles.backspace} />
                     </TouchableOpacity>
@@ -58,10 +46,24 @@ const Numpad = () => {
 export default Numpad;
 
 const styles = StyleSheet.create({
+    display: {
+        height: 200,
+        backgroundColor: "#fff",
+        fontSize: 30,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    displayText: {
+        fontSize: 30,
+    },
+
     numpad: {
+        backgroundColor: "#000",
         // flex: 1,
-        height: '40%',
-        backgroundColor: "#00ADAD"
+        // height: '100%',
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 
     numpadContainer: {
@@ -71,6 +73,7 @@ const styles = StyleSheet.create({
     },
 
     numRows: {
+        width: "90%",
         flexDirection: "row",
         justifyContent: "space-around",
     },
@@ -82,12 +85,14 @@ const styles = StyleSheet.create({
     },
 
     numContainer: {
-        padding: 15
+        padding: 12,
+        backgroundColor: "#00AeAe",
+        borderRadius: 10,
     },
 
     number: {
         color: "#fff",
-        fontSize: 35,
+        fontSize: 38,
         fontWeight: "bold",
     }
 });
